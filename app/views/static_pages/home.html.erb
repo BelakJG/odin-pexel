@@ -1,0 +1,17 @@
+<h1>Pexels Collection Viewer</h1>
+
+<%= form_with(url: root_path, method: :get) do |form| %>
+    <%= form.label :collection_id, "Collection ID" %>
+    <%= form.text_field :collection_id%>
+    <%= form.submit "View Collection" %>
+<% end %>
+
+<% if @photos %>
+    <h1>Collection Photos</h1>
+
+  <% @photos.each do |photo| %>
+    <% if photo["type"] == "Photo" %>
+        <img src=<%= photo["src"]["medium"] %>>
+    <% end %>
+  <% end %>
+<% end %>
